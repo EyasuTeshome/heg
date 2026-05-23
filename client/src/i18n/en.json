@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Home",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "admin": "Admin",
+    "mySubmissions": "My Submissions"
+  },
+  "home": {
+    "title": "Check Official Transit Fares",
+    "subtitle": "Find government-regulated fares for minibus taxis and bajaj",
+    "selectCity": "Select a city",
+    "selectOrigin": "From",
+    "selectDestination": "To",
+    "searchFares": "Search Fares",
+    "noRouteFound": "No routes found between these stops",
+    "loading": "Loading..."
+  },
+  "fare": {
+    "baseFare": "Base Fare",
+    "nightFare": "Night Fare",
+    "peakFare": "Peak Fare",
+    "currency": "ETB",
+    "verified": "Official Verified",
+    "pending": "User Submitted",
+    "approved": "Approved",
+    "compareFares": "Compare Vehicle Types",
+    "overcharged": "I Was Overcharged"
+  },
+  "comments": {
+    "title": "Community Reports",
+    "placeholder": "Share your experience on this route...",
+    "submit": "Post Comment",
+    "loginToComment": "Login to post a comment",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noComments": "No comments yet. Be the first!"
+  },
+  "submit": {
+    "title": "Submit a Tariff",
+    "baseFare": "Base Fare (ETB)",
+    "nightFare": "Night Fare (ETB, optional)",
+    "peakFare": "Peak Fare (ETB, optional)",
+    "vehicleType": "Vehicle Type",
+    "effectiveDate": "Effective Date",
+    "sourceUrl": "Source Document URL (optional)",
+    "submitBtn": "Submit for Review",
+    "success": "Tariff submitted for admin review",
+    "loginRequired": "Please login to submit a tariff"
+  },
+  "report": {
+    "title": "Report Incorrect Fare",
+    "reason": "Reason (describe the issue)",
+    "submit": "Submit Report",
+    "success": "Report submitted. Thank you!"
+  },
+  "overcharge": {
+    "title": "Report Overcharge",
+    "amountClaimed": "Amount Charged (ETB)",
+    "submit": "Report",
+    "success": "Overcharge reported. Thank you!"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "loginTitle": "Sign In",
+    "registerTitle": "Create Account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "cities": "Cities",
+    "stops": "Stops",
+    "routes": "Routes",
+    "vehicleTypes": "Vehicle Types",
+    "tariffs": "Tariffs",
+    "users": "Users",
+    "comments": "Comments",
+    "reports": "Reports",
+    "totalCities": "Total Cities",
+    "totalRoutes": "Total Routes",
+    "pendingTariffs": "Pending Tariffs",
+    "recentReports": "Recent Reports",
+    "approve": "Approve",
+    "reject": "Reject",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "add": "Add New"
+  },
+  "submissions": {
+    "title": "My Submissions",
+    "status": "Status",
+    "submittedAt": "Submitted",
+    "empty": "You haven't submitted any tariffs yet"
+  },
+  "language": "Language"
+}

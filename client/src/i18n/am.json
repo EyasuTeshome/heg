@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "ዋና ገጽ",
+    "login": "ግባ",
+    "register": "ተመዝገብ",
+    "logout": "ውጣ",
+    "admin": "አስተዳዳሪ",
+    "mySubmissions": "ማስረከቢያዎቼ"
+  },
+  "home": {
+    "title": "ኦፊሴላዊ የመጓጓዣ ዋጋዎችን ይፈትሹ",
+    "subtitle": "ለሚኒባስ ታክሲ እና ባጃጅ የተቆጣጠሩ ዋጋዎችን ያግኙ",
+    "selectCity": "ከተማ ይምረጡ",
+    "selectOrigin": "ከ",
+    "selectDestination": "ወደ",
+    "searchFares": "ዋጋ ፈልግ",
+    "noRouteFound": "በዚህ መንገድ ላይ ምንም ዋጋ አልተገኘም",
+    "loading": "እየጫነ ነው..."
+  },
+  "fare": {
+    "baseFare": "መሠረታዊ ዋጋ",
+    "nightFare": "የሌሊት ዋጋ",
+    "peakFare": "የጫፍ ሰዓት ዋጋ",
+    "currency": "ብር",
+    "verified": "ኦፊሴላዊ ተረጋግጧል",
+    "pending": "ተጠቃሚ አስረክቧል",
+    "approved": "ተፈቅዷል",
+    "compareFares": "የተሽከርካሪ ዓይነቶችን አወዳድር",
+    "overcharged": "ከመጠን ያለፈ ተሞሊቶኛል"
+  },
+  "comments": {
+    "title": "የማህበረሰብ ሪፖርቶች",
+    "placeholder": "በዚህ መንገድ ላይ ያለዎትን ልምድ ያጋሩ...",
+    "submit": "አስተያየት ለጥፍ",
+    "loginToComment": "አስተያየት ለመለጠፍ ይግቡ",
+    "edit": "አርትዕ",
+    "delete": "ሰርዝ",
+    "noComments": "እስካሁን አስተያየት የለም። የመጀመሪያው ይሁኑ!"
+  },
+  "submit": {
+    "title": "ታሪፍ ያስረክቡ",
+    "baseFare": "መሠረታዊ ዋጋ (ብር)",
+    "nightFare": "የሌሊት ዋጋ (ብር፣ አማራጭ)",
+    "peakFare": "የጫፍ ሰዓት ዋጋ (ብር፣ አማራጭ)",
+    "vehicleType": "የተሽከርካሪ ዓይነት",
+    "effectiveDate": "የሥራ ቀን",
+    "sourceUrl": "የምንጭ ሰነድ ዩአርኤል (አማራጭ)",
+    "submitBtn": "ለክለሳ ያስረክቡ",
+    "success": "ታሪፉ ለአስተዳዳሪ ክለሳ ቀርቧል",
+    "loginRequired": "ታሪፍ ለማስረከብ እባክዎ ይግቡ"
+  },
+  "report": {
+    "title": "ስህተት ዋጋ ሪፖርት አድርግ",
+    "reason": "ምክንያት (ችግሩን ይግለጹ)",
+    "submit": "ሪፖርት ያስረክቡ",
+    "success": "ሪፖርቱ ቀርቧል። አመሰግናለሁ!"
+  },
+  "overcharge": {
+    "title": "ከመጠን ያለፈ ዋጋ ሪፖርት",
+    "amountClaimed": "የተከፈለ ብር (ብር)",
+    "submit": "ሪፖርት",
+    "success": "ከመጠን ያለፈ ዋጋ ሪፖርት ቀርቧል። አመሰግናለሁ!"
+  },
+  "auth": {
+    "email": "ኢሜይል",
+    "password": "የይለፍ ቃል",
+    "login": "ግባ",
+    "register": "ተመዝገብ",
+    "loginTitle": "ግባ",
+    "registerTitle": "መለያ ፍጠር",
+    "noAccount": "መለያ የለዎትም?",
+    "hasAccount": "መለያ አለዎት?",
+    "signUp": "ተመዝገብ",
+    "signIn": "ግባ"
+  },
+  "admin": {
+    "dashboard": "ዳሽቦርድ",
+    "cities": "ከተሞች",
+    "stops": "ማቆሚያዎች",
+    "routes": "መንገዶች",
+    "vehicleTypes": "የተሽከርካሪ ዓይነቶች",
+    "tariffs": "ታሪፎች",
+    "users": "ተጠቃሚዎች",
+    "comments": "አስተያየቶች",
+    "reports": "ሪፖርቶች",
+    "totalCities": "ጠቅላላ ከተሞች",
+    "totalRoutes": "ጠቅላላ መንገዶች",
+    "pendingTariffs": "በጥበቃ ላይ ያሉ ታሪፎች",
+    "recentReports": "የቅርብ ጊዜ ሪፖርቶች",
+    "approve": "ፍቀድ",
+    "reject": "ውድቅ አድርግ",
+    "delete": "ሰርዝ",
+    "edit": "አርትዕ",
+    "save": "አስቀምጥ",
+    "cancel": "ሰርዝ",
+    "add": "አዲስ ጨምር"
+  },
+  "submissions": {
+    "title": "ማስረከቢያዎቼ",
+    "status": "ሁኔታ",
+    "submittedAt": "የቀረበ ቀን",
+    "empty": "እስካሁን ምንም ታሪፍ አላስረከቡም"
+  },
+  "language": "ቋንቋ"
+}
