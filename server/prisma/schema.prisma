@@ -1,0 +1,194 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum TariffStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+// ─── Models ──────────────────────────────────────────────────────────────────
+
+model City {
+  id        Int      @id @default(autoincrement())
+  name      String
+  region    String
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  stops    Stop[]
+  routes   Route[]
+  users    User[]
+  comments Comment[]
+
+  @@map("cities")
+}
+
+model Stop {
+  id     Int    @id @default(autoincrement())
+  cityId Int    @map("city_id")
+  name   String
+
+  city         City    @relation(fields: [cityId], references: [id])
+  originRoutes Route[] @relation("OriginStop")
+  destRoutes   Route[] @relation("DestinationStop")
+
+  @@map("stops")
+}
+
+model Route {
+  id               Int @id @default(autoincrement())
+  cityId           Int @map("city_id")
+  originStopId     Int @map("origin_stop_id")
+  destinationStopId Int @map("destination_stop_id")
+
+  city            City    @relation(fields: [cityId], references: [id])
+  originStop      Stop    @relation("OriginStop", fields: [originStopId], references: [id])
+  destinationStop Stop    @relation("DestinationStop", fields: [destinationStopId], references: [id])
+
+  tariffs          Tariff[]
+  comments         Comment[]
+  overchargeReports OverchargeReport[]
+
+  @@map("routes")
+}
+
+model VehicleType {
+  id       Int    @id @default(autoincrement())
+  name     String
+  iconSlug String @map("icon_slug")
+
+  tariffs Tariff[]
+
+  @@map("vehicle_types")
+}
+
+model Tariff {
+  id                Int           @id @default(autoincrement())
+  routeId           Int           @map("route_id")
+  vehicleTypeId     Int           @map("vehicle_type_id")
+  baseFare          Decimal       @db.Decimal(10, 2) @map("base_fare")
+  nightFare         Decimal?      @db.Decimal(10, 2) @map("night_fare")
+  peakFare          Decimal?      @db.Decimal(10, 2) @map("peak_fare")
+  currency          String        @default("ETB")
+  effectiveDate     DateTime      @map("effective_date")
+  sourceDocumentUrl String?       @map("source_document_url")
+  isVerified        Boolean       @default(false) @map("is_verified")
+  createdById       Int?          @map("created_by_id")
+  status            TariffStatus  @default(PENDING)
+  rejectionNote     String?       @map("rejection_note")
+  createdAt         DateTime      @default(now()) @map("created_at")
+  updatedAt         DateTime      @updatedAt @map("updated_at")
+
+  route       Route         @relation(fields: [routeId], references: [id])
+  vehicleType VehicleType   @relation(fields: [vehicleTypeId], references: [id])
+  createdBy   User?         @relation(fields: [createdById], references: [id])
+  reports     TariffReport[]
+  history     TariffHistory[]
+
+  @@map("tariffs")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         UserRole @default(USER)
+  cityId       Int?     @map("city_id")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  city             City?              @relation(fields: [cityId], references: [id])
+  tariffs          Tariff[]
+  comments         Comment[]
+  refreshTokens    RefreshToken[]
+  tariffReports    TariffReport[]
+  overchargeReports OverchargeReport[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int      @map("user_id")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("refresh_tokens")
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  routeId   Int      @map("route_id")
+  cityId    Int      @map("city_id")
+  body      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user  User  @relation(fields: [userId], references: [id])
+  route Route @relation(fields: [routeId], references: [id])
+  city  City  @relation(fields: [cityId], references: [id])
+
+  @@map("comments")
+}
+
+model TariffReport {
+  id        Int      @id @default(autoincrement())
+  tariffId  Int      @map("tariff_id")
+  userId    Int      @map("user_id")
+  reason    String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  tariff Tariff @relation(fields: [tariffId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@map("tariff_reports")
+}
+
+model OverchargeReport {
+  id            Int      @id @default(autoincrement())
+  routeId       Int      @map("route_id")
+  vehicleType   String   @map("vehicle_type")
+  amountClaimed Decimal  @db.Decimal(10, 2) @map("amount_claimed")
+  userId        Int?     @map("user_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  route Route @relation(fields: [routeId], references: [id])
+  user  User?  @relation(fields: [userId], references: [id])
+
+  @@map("overcharge_reports")
+}
+
+model TariffHistory {
+  id            Int      @id @default(autoincrement())
+  tariffId      Int      @map("tariff_id")
+  baseFare      Decimal  @db.Decimal(10, 2) @map("base_fare")
+  nightFare     Decimal? @db.Decimal(10, 2) @map("night_fare")
+  peakFare      Decimal? @db.Decimal(10, 2) @map("peak_fare")
+  effectiveDate DateTime @map("effective_date")
+  changedAt     DateTime @default(now()) @map("changed_at")
+
+  tariff Tariff @relation(fields: [tariffId], references: [id])
+
+  @@map("tariff_history")
+}
