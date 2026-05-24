@@ -95,7 +95,7 @@ export default function Dashboard() {
                       {tariff.route?.originStop?.name || '?'} → {tariff.route?.destinationStop?.name || '?'}
                     </p>
                     <p className="text-slate-500 text-xs">
-                      {tariff.vehicleType?.name} · {tariff.baseFare?.toFixed(2)} ETB
+                      {tariff.vehicleType?.name} · {parseFloat(tariff.baseFare || 0).toFixed(2)} ETB
                     </p>
                   </div>
                   <Badge variant="pending" />

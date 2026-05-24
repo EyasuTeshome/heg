@@ -130,7 +130,7 @@ export default function Reports() {
                             </p>
                             <p className="text-slate-500 text-xs">
                               {report.tariff?.vehicleType?.name || '—'} ·{' '}
-                              {report.tariff?.baseFare?.toFixed(2)} ETB
+                              {parseFloat(report.tariff?.baseFare || 0).toFixed(2)} ETB
                             </p>
                           </td>
                           <td className="px-4 py-3 text-slate-300 text-sm max-w-xs">
