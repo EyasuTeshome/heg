@@ -143,7 +143,8 @@ export default function FareLookup() {
 
     try {
       const res = await getRouteTariffs(matchedRoute.id)
-      const active = res.data.filter((t) => t.status === 'APPROVED' || t.status === 'VERIFIED' || t.status === 'PENDING')
+      const { approved = [], pendingByUser = [] } = res.data
+      const active = [...approved, ...pendingByUser]
       setTariffs(active)
       if (active.length === 0) setNoRoute(true)
     } catch {
@@ -153,7 +154,7 @@ export default function FareLookup() {
     }
   }, [cityId, fromId, toId, routes])
 
-  const verifiedTariffs = tariffs.filter((t) => t.status === 'APPROVED' || t.status === 'VERIFIED')
+  const verifiedTariffs = tariffs.filter((t) => t.status === 'APPROVED')
   const pendingTariffs = tariffs.filter((t) => t.status === 'PENDING')
 
   return (
