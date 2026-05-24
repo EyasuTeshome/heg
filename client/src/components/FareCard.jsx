@@ -29,9 +29,16 @@ function formatDate(dateStr) {
   }
 }
 
+function toNum(val) {
+  return parseFloat(val) || 0
+}
+
 function pctDiff(base, other) {
   if (!base || !other) return null
-  const diff = ((other - base) / base) * 100
+  const b = toNum(base)
+  const o = toNum(other)
+  if (!b) return null
+  const diff = ((o - b) / b) * 100
   return diff > 0 ? `+${diff.toFixed(0)}%` : `${diff.toFixed(0)}%`
 }
 
@@ -52,12 +59,13 @@ export default function FareCard({ tariff, route }) {
       ? 'rejected'
       : 'pending'
 
-  const displayFare =
+  const displayFare = toNum(
     fareMode === 'night' && tariff.nightFare != null
       ? tariff.nightFare
       : fareMode === 'peak' && tariff.peakFare != null
       ? tariff.peakFare
       : tariff.baseFare
+  )
 
   return (
     <>
@@ -74,7 +82,7 @@ export default function FareCard({ tariff, route }) {
         {/* Price display */}
         <div className="px-4 pb-2 flex items-end gap-2">
           <span className="font-bebas text-5xl text-white leading-none">
-            {displayFare != null ? displayFare.toFixed(2) : '—'}
+            {displayFare ? displayFare.toFixed(2) : '—'}
           </span>
           <span className="text-slate-400 text-base mb-1 font-inter">{t('fare.currency')}</span>
         </div>

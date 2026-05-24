@@ -271,7 +271,7 @@ export default function Tariffs() {
                       </td>
                       <td className="px-4 py-3 text-slate-400">{tariff.vehicleType?.name || '—'}</td>
                       <td className="px-4 py-3 text-right font-bebas text-lg text-white">
-                        {tariff.baseFare?.toFixed(2)}
+                        {parseFloat(tariff.baseFare || 0).toFixed(2)}
                       </td>
                       <td className="px-4 py-3 text-slate-400 text-xs">{formatDate(tariff.effectiveDate)}</td>
                       <td className="px-4 py-3">

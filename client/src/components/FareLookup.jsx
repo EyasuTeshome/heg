@@ -301,13 +301,13 @@ export default function FareLookup() {
                                 {tariff.vehicleType?.name || 'Unknown'}
                               </td>
                               <td className="px-4 py-3 text-right font-bebas text-xl text-white">
-                                {tariff.baseFare?.toFixed(2)}
+                                {parseFloat(tariff.baseFare || 0).toFixed(2)}
                               </td>
                               <td className="px-4 py-3 text-right text-slate-400">
-                                {tariff.nightFare != null ? tariff.nightFare.toFixed(2) : '—'}
+                                {tariff.nightFare != null ? parseFloat(tariff.nightFare).toFixed(2) : '—'}
                               </td>
                               <td className="px-4 py-3 text-right text-slate-400">
-                                {tariff.peakFare != null ? tariff.peakFare.toFixed(2) : '—'}
+                                {tariff.peakFare != null ? parseFloat(tariff.peakFare).toFixed(2) : '—'}
                               </td>
                               <td className="px-4 py-3 text-center">
                                 <span

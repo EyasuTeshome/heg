@@ -98,7 +98,7 @@ export default function Submissions() {
                 {/* Fare */}
                 <div className="flex items-end gap-1 mb-3">
                   <span className="font-bebas text-3xl text-white leading-none">
-                    {tariff.baseFare?.toFixed(2)}
+                    {parseFloat(tariff.baseFare || 0).toFixed(2)}
                   </span>
                   <span className="text-slate-400 text-sm mb-0.5">ETB</span>
                 </div>
