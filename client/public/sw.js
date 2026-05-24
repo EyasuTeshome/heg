@@ -39,6 +39,9 @@ self.addEventListener('activate', (event) => {
 
 // Fetch: cache strategy
 self.addEventListener('fetch', (event) => {
+  // Only handle http/https — skip chrome-extension:// and others
+  if (!event.request.url.startsWith('http')) return
+
   const url = new URL(event.request.url)
 
   // Only handle GET requests
